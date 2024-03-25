@@ -43,15 +43,15 @@ class Licencie
     #[ORM\Column(length: 100)]
     private ?string $mail = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateadhesion = null;
+    #[ORM\Column(length: 100)]
+    private ?string $dateadhesion = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'idclub', nullable: false)]
     private ?club $idclub = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: "idqualite", nullable: false)]
     private ?qualite $idqualite = null;
 
     public function getId(): ?int
@@ -167,12 +167,12 @@ class Licencie
         return $this;
     }
 
-    public function getDateadhesion(): ?\DateTimeInterface
+    public function getDateadhesion(): ?string
     {
         return $this->dateadhesion;
     }
 
-    public function setDateadhesion(\DateTimeInterface $dateadhesion): static
+    public function setDateadhesion(string $dateadhesion): static
     {
         $this->dateadhesion = $dateadhesion;
 
